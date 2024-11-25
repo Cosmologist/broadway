@@ -25,7 +25,7 @@ class ReflectionSerializer implements Serializer
         return $this->serializeObjectRecursively($object);
     }
 
-    private function serializeValue($value)
+    protected function serializeValue($value)
     {
         if (is_object($value)) {
             return $this->serializeObjectRecursively($value);
@@ -76,7 +76,7 @@ class ReflectionSerializer implements Serializer
         return $this->deserializeObjectRecursively($serializedObject);
     }
 
-    private function deserializeValue($value)
+    protected function deserializeValue($value)
     {
         if (is_array($value) && isset($value['class']) && isset($value['payload'])) {
             return $this->deserializeObjectRecursively($value);
